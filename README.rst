@@ -63,9 +63,11 @@ Or by including ``SSLIFY_PERMANENT`` in your app's config.
 
 Exclude Certain Paths from Being Redirected
 -------------------------------------------
-You can exlude a path that starts with given string by including a list called ``skips``::
- 
-     sslify = SSLify(app, skips=['mypath', 'anotherpath'])
+You can exlude a path that starts with given string or matches a regex
+by including a list called ``skips``::
+
+    import re
+    sslify = SSLify(app, skips=['mypath', 'anotherpath', re.compile('^/foo/\w*/bar')])
 
 Or by including ``SSLIFY_SKIPS`` in your app's config.
 
